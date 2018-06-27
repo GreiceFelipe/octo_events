@@ -3,7 +3,7 @@ module Events
     attr_accessor :result, :errors
     def initialize(params)
       @issue = Issue.find_or_initialize_by(number: params[:issue][:number])
-      @issue.assign_attributes(title: params[:issue][:title], github_id: params[:issue][:id]) if params[:issue]
+      @issue.assign_attributes(title: params[:issue][:title], github_id: params[:issue][:id])
       @errors = Hash.new
       @event = Event.new(issue: @issue, action: params[:event][:action]) if params[:event]
     end

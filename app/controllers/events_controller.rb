@@ -1,8 +1,12 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :update, :destroy]
+  before_action :set_event, only: [:show, :update]
 
   def index
-    @events = Event.all
+    if params[:issue_id]
+      @events = Issue.find_by(number: params[:issue_id]).events
+    else
+      @events = Event.all
+    end
 
     render json: @events
   end
@@ -13,6 +17,7 @@ class EventsController < ApplicationController
 
   def create
     event_service = Events::Create.new(params)
+    event_service.call
     if event_service.success?
       render json: event_service.result, status: :created, location: @event
     else
@@ -26,10 +31,6 @@ class EventsController < ApplicationController
     else
       render json: @event.errors, status: :unprocessable_entity
     end
-  end
-
-  def destroy
-    @event.destroy
   end
 
   private
