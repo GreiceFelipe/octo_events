@@ -61,4 +61,6 @@
  *     {
  *        errors: "Record Not Found"
  *     }
+ *
+ * @apiSampleRequest http://octoevents.herokuapp.com/issues/
  */
