@@ -1,5 +1,5 @@
 /**
- * @api {get} /issues Get All
+ * @api {get} /issues 1 - Get All
  * @apiVersion 0.1.0
  * @apiName GetIssues
  * @apiGroup Issues
@@ -35,7 +35,7 @@
  */
 
 /**
- * @api {get} /issues/:id Show Issue
+ * @api {get} /issues/:id 2 - Show Issue
  * @apiVersion 0.1.0
  * @apiName GetIssue
  * @apiGroup Issues
@@ -62,5 +62,45 @@
  *        errors: "Record Not Found"
  *     }
  *
- * @apiSampleRequest http://octoevents.herokuapp.com/issues/
+ */
+
+/**
+ * @api {get} /issues/:number/events 3 - List Events
+ * @apiVersion 0.1.0
+ * @apiName GetIssueEvent
+ * @apiGroup Issues
+ *
+ * @apiDescription Returns a list of issue events
+ *
+ * @apiParam {Number} number The Issue github number
+ *
+ * @apiExample Example usage:
+ * curl -i http://octoevents.herokuapp.com/issues/1/events -H "Content-type: application/json" -H "Accept: application/json"
+ *
+ * @apiSuccess {Number}     id              The Event ID.
+ * @apiSuccess {String}     Action          Event action
+ * @apiSuccess {Number}     issue_id        Issue that event belongs.
+ * @apiSuccess {Date}       created_at      Created at Timestamp
+ * @apiSuccess {Date}       updated_at      Updated At Timestamp
+ *
+ * @apiError IssueNotFound   The <code>id</code> of the Issue was not found.
+ *  * @apiSuccessExample Response (example):
+ * HTTP/1.1 200 OK
+ *  [
+ *      {
+ *        id: 1,
+ *        number: 1,
+ *        title: "Make API docs and API doc search easier to access",
+ *        github_id: "336169565",
+ *        created_at: "2018-06-27T10:35:44.550Z",
+ *        updated_at: "2018-06-27T10:35:44.550Z"
+ *      }
+ *  ]
+ *
+ * @apiErrorExample Response (example):
+ *     HTTP/1.1 404 Not Found
+ *     {
+ *        errors: "Record Not Found"
+ *     }
+ *
  */
