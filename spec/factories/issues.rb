@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :issue do
-    number Faker::Number.number(10)
+    number Faker::Number.number(1)
     title Faker::Lorem.sentence
-    github_id Faker::Lorem.characters(15)
+    github_id Faker::Lorem.characters(5)
   end
 end
