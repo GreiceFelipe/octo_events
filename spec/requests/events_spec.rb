@@ -35,10 +35,22 @@ RSpec.describe "Events", type: :request do
       }
     end
 
-    context 'with valid params' do
+    let!(:invalid_params) do
+      {
+          issue: {
+              number: Faker::Number.number(1),
+              title: nil
+          },
+          event: {
+              action: 'create'
+          }
+      }
+    end
+
+    context 'with invalid params' do
       it 'should return correct http status' do
-        post events_path, params: valid_params, headers: { 'Accept': 'application/json' }
-        expect(response).to have_http_status(:created)
+        post events_path, params: invalid_params, headers: { 'Accept': 'application/json' }
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
 
