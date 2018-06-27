@@ -30,6 +30,8 @@
  *        updated_at: "2018-06-27T10:35:44.550Z"
  *      }
  *  ]
+ *
+ *  @apiSampleRequest http://octoevents.herokuapp.com/issues
  */
 
 /**

@@ -167,6 +167,11 @@ define({ "api": [
         }
       ]
     },
+    "sampleRequest": [
+      {
+        "url": "http://octoevents.herokuapp.com/issues"
+      }
+    ],
     "filename": "docs/events.js",
     "groupTitle": "Issues"
   }
