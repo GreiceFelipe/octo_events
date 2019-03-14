@@ -1,0 +1,24 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+#  web:
+#    build: .
+#    #    working_dir: /mnt/rails
+#    #    env_file: .env
+#    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+#    volumes:
+#      - ./rails:/mnt/rails
+#    ports:
+#      - "3000:3000"
+#    links:
+#      - db
+#    depends_on:
+#      - db
+
+volumes:
+  postgres_data:
